@@ -1,4 +1,7 @@
 import itertools
-itertools.permutations([1,2,3])
 
-print list(itertools.permutations([1,2,3,4], 4))
+print list(itertools.permutations([1,2]))
+
+#arreglo = list(itertools.permutations([1,2]))
+
+#print arreglo[0]
