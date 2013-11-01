@@ -16,11 +16,12 @@ def factorial(n):
 #genera la poblacion con el numero de elementos que se solicitan
 #parametros: poblacion es la poblacion total, cantidad es el numero de elementos que vamos a tomar de la poblacion
 #devuelve la generacion que contiene el numero de elementos solicitados
-def tomarGeneracion(poblacion,cantidad):
+#genera la poblacion con el numero de elementos que se solicitan
+#parametros: poblacion es la poblacion total, cantidad es el numero de elementos que vamos a tomar de la poblacion
+#devuelve la generacion que contiene el numero de elementos solicitados
+def tomarGeneracion(cantidad):
 	generacion=[]
-	numeros = set()
 	min=1
-	#define el limite superior para generar la poblacion inicial
 	max=factorial(cantidad)
 	if(max < min):
 		print"error"
@@ -28,10 +29,14 @@ def tomarGeneracion(poblacion,cantidad):
 	if(cantidad > (max-min)):
 		print "error: solicita mas elementos de los que tiene"
 		cantidad = max - min
-	while len(numeros) < cantidad:
-		numeros.add(random.randint(min, max))
-	for i in numeros:
-		generacion.append(poblacion[i])
+	while len(generacion) < cantidad:
+		numero=random.randint(min, max)
+		if numero in generacion:
+			numero=random.randint(min, max)
+		else:
+			generacion.append(numero)
+	print generacion
+		
 	return generacion
 
 
