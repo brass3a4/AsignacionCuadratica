@@ -1,7 +1,18 @@
-import itertools
+# -*- encoding: utf-8 -*-
 
-print list(itertools.permutations([1,2]))
+# Importamos las liberias del proyecto
+from libj import *
 
-#arreglo = list(itertools.permutations([1,2]))
+# Definimos las probabilidades
+# pc := Probablilidad de cruce
+# pm := Probabilidad de mutación
 
-#print arreglo[0]
+pc = 0.5
+pm = 0.1
+
+
+def principal():
+
+	print generarPoblacion(5)
+
+principal()
