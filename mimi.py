@@ -4,33 +4,36 @@
 import random
 from libj import *
 
-
-m=10
-min=1
-max=1
-#calcula factorial como limite superior para generar los m cromosomas de la generacion
-def factorial(max,n):  
-	if(n>0):  
-		max=factorial(max,n-1)  
+def factorial(n):
+	max=1 
+	if(n>0): 
+		max=factorial(n-1)  
 		max=max*n  
 	else:  
-		max=1  
-	return max  
+		max=1 
+	return max 
 
+#genera la poblacion con el numero de elementos que se solicitan
+#parametros: poblacion es la poblacion total, cantidad es el numero de elementos que vamos a tomar de la poblacion
+#devuelve la generacion que contiene el numero de elementos solicitados
+def tomarGeneracion(poblacion,cantidad):
+	generacion=[]
+	numeros = set()
+	min=1
+	#define el limite superior para generar la poblacion inicial
+	max=factorial(cantidad)
+	if(max < min):
+		print"error"
+		min, max = max, min
+	if(cantidad > (max-min)):
+		print "error: solicita mas elementos de los que tiene"
+		cantidad = max - min
+	while len(numeros) < cantidad:
+		numeros.add(random.randint(min, max))
+	for i in numeros:
+		generacion.append(poblacion[i])
+	return generacion
 
-#Descripción: funcion para elegir los elementos de la primera generacion sin repeticion
-#Parametros: int m es el numero de elementos, int min el limite inferior e int max el limite superior.
-def aleatorios(cantidad, min, max):
-	#print "hola"
-    numeros = set()
-    if(max < min):
-        min, max = max, min
-    #valida que no se pidan mas elementos del rango de seleccion   
-    if(cantidad > (max-min)):
-        cantidad = max - min
-    while len(numeros) < cantidad:
-        numeros.add(random.randint(min, max))
-    return numeros
 
 
 #funcion genera numeros aleatorios [0,1]
