@@ -5,7 +5,7 @@
 #archivo_matriz_A= "/home/shangueili/Escritorio/algoritmos_proyecto/matrizA.txt"
 #archivo_matriz_B= "/home/shangueili/Escritorio/algoritmos_proyecto/matrizB.txt"
 
-def CargarMatriz(archivo):
+def cargarMatriz(archivo):
 	f = open(archivo)
 	data = f.read().strip()
 	f.close
