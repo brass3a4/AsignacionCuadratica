@@ -16,7 +16,6 @@ def cargarMatriz(archivo):
 def obtenerElemMatriz(matriz,p,q):
 	if (matriz == 'A'):
 		n = CargarMatriz(archivo_matriz_A)
-		print n
 		for i in range(0, len(n)):
 			for j in range(0,len(n)):
 				if (p==i and q==j):
@@ -24,7 +23,6 @@ def obtenerElemMatriz(matriz,p,q):
 		return res
 	elif (matriz =='B'):
 		n = CargarMatriz(archivo_matriz_B)
-		print n
 		for i in range(0, len(n)):
 			for j in range(0,len(n)):
 				if (p==i and q==j):
