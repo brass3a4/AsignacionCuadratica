@@ -1,8 +1,9 @@
+# -*- encoding: utf-8 -*-
+
 import itertools
 
-# Descripcion: Esta funcion genera las n permutaciones 
+# Descripción: Esta función genera las n permutaciones 
 # Parametros: [int n]
-
 def generarPoblacion(n):
 	lista = []
 	# Creo una lista de n elementos a permutar
