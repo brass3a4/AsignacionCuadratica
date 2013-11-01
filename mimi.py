@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import random
 from libj import *
+
 
 m=10
 min=1
