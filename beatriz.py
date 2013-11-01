@@ -10,7 +10,7 @@ def cargarMatriz(archivo):
 	data = f.read().strip()
 	f.close
 	M= [[int(num) for num in line.strip().split()] for line in data.split('\n')]
-	print M
+	return M
 	
 		
 #print CargarMatriz(archivo_matriz_A)
