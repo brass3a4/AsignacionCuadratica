@@ -3,7 +3,7 @@
 
 import random
 from libj import *
-n=4
+
 def factorial(n):
 	max=1 
 	if(n>0): 
@@ -13,8 +13,8 @@ def factorial(n):
 		max=1 
 	return max 
 
-def elementosAleatorios(cantidad):
-	pobla=generarPoblacion(cantidad)
+def tomarGeneracion(poblacion,cantidad):
+	generacion=[]
 	numeros = set()
 	min=1
 	max=factorial(cantidad)
@@ -27,11 +27,9 @@ def elementosAleatorios(cantidad):
 	while len(numeros) < cantidad:
 		numeros.add(random.randint(min, max))
 	for i in numeros:
-		print i
-		print pobla[i]
-	return numeros
+		generacion.append(poblacion[i])
+	return generacion
 
-print elementosAleatorios (n)
 
 
 #funcion genera numeros aleatorios [0,1]
