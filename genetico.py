@@ -2,6 +2,8 @@
 
 # Importamos las liberias del proyecto
 from libj import *
+#from mimi import *
+#from efrenFile import *
 
 
 # Definimos las probabilidades
@@ -11,9 +13,13 @@ from libj import *
 pc = 0.5
 pm = 0.1
 
+# n:= Tamaño del cromosoma
+n = 4
 
 def principal():
 
-	print generarPoblacion(5)
+	poblacion = generarPoblacion(n)
+	print len(poblacion)
+	print poblacion
 
 principal()
