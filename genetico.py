@@ -3,7 +3,8 @@
 # Importamos las liberias del proyecto
 from libj import *
 from mimi import *
-#from efrenFile import *
+from efrenFile import *
+from beatriz import *
 
 
 # Definimos las probabilidades
@@ -17,9 +18,9 @@ pm = 0.1
 n = 4
 
 def principal():
-	print "hola"
-	# poblacion = generarPoblacion(n)
-	# print len(poblacion)
-	# print poblacion
+	poblacion = generarPoblacion(n)
+	matrizA = cargarMatriz('matrizA.txt')
+	matrizB = cargarMatriz('matrizB.txt')
+	generacion = tomarGeneracion(poblacion,n)
 
-
+principal()
