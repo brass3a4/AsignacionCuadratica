@@ -38,12 +38,12 @@ def aleatorios(cantidad, min, max):
 #parametros: modulo m, el multiplicador a y la semilla o valor de comienzo Z0 son enteros no negativos
 #se verifica que:0 menor o igual que Zi menor que m
 #Para obtener un numero aleatorio de la distribucion uniforme [0,1) se debe hacer Ui = Zi/m. Además de ser no negativos se debe veriﬁcar que: 0 < m, a < m, c < m, Z0 < m
-def generaAleatDec(m):
+def generaAleatDec(m,primo):
 	Z={}
 	U={}
 	denom= (pow(2,31))-1.0
 	a = 630360016
-	Z[0] = 7
+	Z[0] = primo
 	for i in range(1, m+1):
 		Z[i]=(a*Z[i-1]) % denom
 	for i in range (1,m+1):
