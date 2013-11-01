@@ -1,6 +1,8 @@
 import itertools
 import string
 
+from beatriz import *
+
 
 #Parametros: [lista cromosoma, int n, arreglo 2D matrizA, arreglo 2D matrizB]
 def calcularAptitud(cromosoma, n, matrizA, matrizB):
