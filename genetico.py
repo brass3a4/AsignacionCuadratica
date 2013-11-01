@@ -2,7 +2,7 @@
 
 # Importamos las liberias del proyecto
 from libj import *
-#from mimi import *
+from mimi import *
 #from efrenFile import *
 
 
@@ -17,9 +17,9 @@ pm = 0.1
 n = 4
 
 def principal():
+	print "hola"
+	# poblacion = generarPoblacion(n)
+	# print len(poblacion)
+	# print poblacion
 
-	poblacion = generarPoblacion(n)
-	print len(poblacion)
-	print poblacion
 
-principal()
