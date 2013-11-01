@@ -12,6 +12,21 @@ def cargarMatriz(archivo):
 	M= [[int(num) for num in line.strip().split()] for line in data.split('\n')]
 	return M
 	
-		
-#print CargarMatriz(archivo_matriz_A)
-#print CargarMatriz(archivo_matriz_B)
+
+def obtenerElemMatriz(matriz,p,q):
+	if (matriz == 'A'):
+		n = CargarMatriz(archivo_matriz_A)
+		print n
+		for i in range(0, len(n)):
+			for j in range(0,len(n)):
+				if (p==i and q==j):
+					res = n[i][j]
+		return res
+	elif (matriz =='B'):
+		n = CargarMatriz(archivo_matriz_B)
+		print n
+		for i in range(0, len(n)):
+			for j in range(0,len(n)):
+				if (p==i and q==j):
+					res = n[i][j]
+		return res
