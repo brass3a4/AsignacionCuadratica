@@ -3,6 +3,7 @@
 # Importamos las liberias del proyecto
 from libj import *
 
+
 # Definimos las probabilidades
 # pc := Probablilidad de cruce
 # pm := Probabilidad de mutación
