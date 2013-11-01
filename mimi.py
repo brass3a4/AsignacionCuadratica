@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 import random
+from libj import *
 
-n=4
 m=10
 min=1
 max=1
@@ -15,9 +15,8 @@ def factorial(max,n):
   max=1  
  return max  
 max=factorial(max,n)  
-print (max)  
 
-#Descripción: funcion para elegir los elementos de la primera generacion
+#Descripción: funcion para elegir los elementos de la primera generacion sin repeticion
 #Parametros: int m es el numero de elementos, int min el limite inferior e int max el limite superior.
 def aleatorios(cantidad, min, max):
 	#print "hola"
@@ -32,5 +31,4 @@ def aleatorios(cantidad, min, max):
         numeros.add(random.randint(min, max))
     return numeros
 
-print aleatorios (m, min, max)
 
