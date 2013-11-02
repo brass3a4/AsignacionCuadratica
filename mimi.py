@@ -21,6 +21,7 @@ def factorial(n):
 #devuelve la generacion que contiene el numero de elementos solicitados
 def tomarGeneracion(poblacion,cantidad):
 	numeros=[]
+	generacion=[]
 	min=1
 	#define el limite superior para generar la poblacion inicial
 	max=factorial(cantidad)
