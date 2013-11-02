@@ -14,17 +14,10 @@ def cargarMatriz(archivo):
 	
 
 def obtenerElemMatriz(matriz,p,q):
-	if (matriz == 'A'):
-		n = CargarMatriz(archivo_matriz_A)
-		for i in range(0, len(n)):
-			for j in range(0,len(n)):
-				if (p==i and q==j):
-					res = n[i][j]
-		return res
-	elif (matriz =='B'):
-		n = CargarMatriz(archivo_matriz_B)
-		for i in range(0, len(n)):
-			for j in range(0,len(n)):
-				if (p==i and q==j):
-					res = n[i][j]
-		return res
+	return matriz[p][q]
+	#for i in range(1, 1 + len(matriz)):
+	#	for j in range(1, 1 + len(matriz)):
+	#		if (p==i and q==j):
+	#			res = matriz[i][j]
+	#			return res
+	
