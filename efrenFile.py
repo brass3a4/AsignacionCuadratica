@@ -26,3 +26,20 @@ def calcularAptitud(cromosoma, n, matrizA, matrizB):
 	  		producto = elementoA * elementoB
 	  		resultadoAptitud = resultadoAptitud + producto
 	return resultadoAptitud
+
+def calcularProbabilidadUnitaria(aptitudesGeneracion, sumaAptitudes):
+	probabilidadesUnitarias = []
+	for indice in xrange(0, len(aptitudesGeneracion)):
+		probabilidadesUnitarias.append(float(aptitudesGeneracion[indice])/float(sumaAptitudes))
+	return probabilidadesUnitarias
+
+def calcularProbabilidadAcumulada(probabilidadesUnitarias):
+	sumaAcumulada = 0
+	probabilidadesAcumuladas = [0]
+	for indice in xrange(0,len(probabilidadesUnitarias)):
+		sumaAcumulada = sumaAcumulada + probabilidadesUnitarias[indice]
+		if indice == -1 + len(probabilidadesUnitarias):
+			sumaAcumulada = round(sumaAcumulada)
+		probabilidadesAcumuladas.append(sumaAcumulada)
+	return probabilidadesAcumuladas
+	

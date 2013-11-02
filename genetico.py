@@ -18,7 +18,9 @@ pm = 0.1
 n = 4
 
 def principal():
-
+	aptitudCromosomasMasApto = 0
+	sumaAptitudes = 0
+	cromosomaMasApto = ""
 	# Generamos la población
 	poblacion = generarPoblacion(n)
 	# Leemos las matrices A y B que están en los ficheros
@@ -26,9 +28,19 @@ def principal():
 	matrizB = cargarMatriz('matrizB.txt')
 	# Tomamos la generación cero de la población total
 	generacion = tomarGeneracion(poblacion,n)
+	aptitudesGeneracion = []
 
 	# Calculamos la aptitud de cada cromosoma
 	for cromosoma in generacion:
-		print calcularAptitud(cromosoma, n, matrizA, matrizB)
+		aptitudCromosomaAnalizado = calcularAptitud(cromosoma, n, matrizA, matrizB)
+		aptitudesGeneracion.append(aptitudCromosomaAnalizado)
+		if aptitudCromosomaAnalizado < aptitudCromosomasMasApto:
+			aptitudCromosomasMasApto = aptitudCromosomaAnalizado
+			cromosomaMasApto = cromosoma
+		sumaAptitudes = sumaAptitudes + aptitudCromosomaAnalizado
+	probabilidadesUnitarias = calcularProbabilidadUnitaria(aptitudesGeneracion, sumaAptitudes)
+	probabilidadesAcumuladas = calcularProbabilidadAcumulada(probabilidadesUnitarias)
+	print probabilidadesUnitarias
+	print probabilidadesAcumuladas
 
 principal()
