@@ -35,8 +35,9 @@ def tomarGeneracion(poblacion,cantidad):
 		else:
 			numeros.append(numero)
 	for i in range(0,cantidad):
-		generacion.append(poblacion[numeros[i]])
+		generacion.append(poblacion[numeros[i]-1])
 	return generacion
+
 
 
 #funcion genera numeros aleatorios [0,1]
