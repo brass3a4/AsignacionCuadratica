@@ -18,9 +18,17 @@ pm = 0.1
 n = 4
 
 def principal():
+
+	# Generamos la población
 	poblacion = generarPoblacion(n)
+	# Leemos las matrices A y B que están en los ficheros
 	matrizA = cargarMatriz('matrizA.txt')
 	matrizB = cargarMatriz('matrizB.txt')
+	# Tomamos la generación cero de la población total
 	generacion = tomarGeneracion(poblacion,n)
+
+	# Calculamos la aptitud de cada cromosoma
+	for cromosoma in generacion:
+		print calcularAptitud(cromosoma, n, matrizA, matrizB)
 
 principal()

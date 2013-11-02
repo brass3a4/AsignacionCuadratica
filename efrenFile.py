@@ -1,5 +1,6 @@
 import itertools
 import string
+import ast
 
 from beatriz import *
 
@@ -12,12 +13,16 @@ def calcularAptitud(cromosoma, n, matrizA, matrizB):
 	 #en esta variable se guardara el resultado de la aptitud del cromosoma
 	resultadoAptitud = 0
 	 #Recorro cada elemeto de la matriz a para multiplicarlo con la permutacion del cromosoma en b
-	for columna in xrange(1,n):
-		for renglon in xrange(1,n):
-	 		elementoA = obtenerElemMatriz(matrizA, columna, renglon)
-	 		valorI = cromosoma[columna]
-	 		valorK = cromosoma[renglon]
-	 		elementoB = obtenerElemMatriz(matrizB, alfabeto[valorI], alfabeto[valorK])
-	 		producto = elementoA * elementoB
-	 		resultadoAptitud = resultadoAptitud + producto
+	for columna in xrange(0, n):
+		for renglon in xrange(0, n):
+			elementoA = obtenerElemMatriz(matrizA, renglon, columna)
+			valorI = cromosoma[columna]
+			valorI = alfabeto[valorI]
+			valorI = -1 + int(valorI)
+			valorK = cromosoma[renglon]
+			valorK = alfabeto[valorK]
+			valorK = -1 + int(valorK)
+	 		elementoB = obtenerElemMatriz(matrizB, valorI, valorK)
+	  		producto = elementoA * elementoB
+	  		resultadoAptitud = resultadoAptitud + producto
 	return resultadoAptitud
