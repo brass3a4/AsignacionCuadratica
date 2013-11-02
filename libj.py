@@ -18,3 +18,15 @@ def generarPoblacion(n):
 	poblacion = list(itertools.permutations(lista))
 
 	return poblacion
+
+# Elementos de entrada: Generación i
+# Elementos de salida: Generacion i+1 (Cruzada)
+# Tomo numeros aleatorios
+# Ruleta 
+# - Definimos una nueva poblacion Vi de tamaño m
+# - Generas nuevos numeros aleatorios cambiando la semilla (primo)
+# - Comparas los numeros aleatorios con pc y elijo los cromosomas que van a cruzar
+# - Cruza
+# - Quito el menos apto
+
+
