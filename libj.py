@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 import random
 import itertools
+from efrenFile import *
+
 def eligeCemilla():
 	while(1):
 		num=random.randrange(1000000)
@@ -56,39 +58,66 @@ def generarPoblacion(n):
 # - Cruza
 # - Quito el menos apto
 
-def ruleta(generacion):
+# Descripción: Selecciona los cromosomas candidatos a cruce dependiendo de la probailidad acumulada Q
+# Parámetros: [list generacion, list Q]
+def ruleta(generacion,Q):
 	numeros = generaAleatDec(10)
-	Q = [0.0,0.3,0.6,1.0]
 	elementos = []
-	print numeros
+	# Desde 1 hasta el tamaño de la generación
 	for i in xrange(1,len(generacion)+1):
-		for qi in xrange(0, len(Q)):
+		# Desde 0 hasta el tamaño de Q
+		for qi in xrange(0, len(Q)-1):
+			# Si el Q[qi] correspondiente es <= al número aleatorio seleccionamos al cromosoma Q[qi] como candidato a cruce
 			if numeros[i] <= Q[qi]:				
 				elementos.append(generacion[qi])
 				break
 
 	return elementos
 
+# Descripción: Selecciona cromosomas a cruzar dependiendo de la probabilidad de cruce
+# Parámetros: [list elementos,float pc]
 def seleccionarElementosCruce(elementos,pc):
+	# Obtengo números aleatorios
 	numeros2 = generaAleatDec(10)
 	elementosCruce = []
-
+	# Para cada número aleatorio que sea mayor a la PC Agrego el cromosoma correspondiente a la lista de elementos a cruzar
 	for j in xrange(1, len(elementos)+1):
 		if numeros2[j] > pc:
 			elementosCruce.append(elementos[j-1])
-
 	return elementosCruce
 
+# Descripción: Mientras no tenga un número PAR de cromosomas selecciono cromosomas
+# Parámetros: [list elementos,float pc]
 def traerElementosCruce(elementos,pc):
 	elementosCruce = seleccionarElementosCruce(elementos,pc)
 	while (len(elementosCruce)%2) !=0 or len(elementosCruce) == 0:
 		elementosCruce = seleccionarElementosCruce(elementos,pc)
 	return elementosCruce
 
-# generacion = [('C', 'A', 'D', 'B'), ('B', 'A', 'D', 'C'), ('B', 'D', 'C', 'A'), ('D', 'C', 'A', 'B')]
-# elementos = ruleta(generacion)
-# print elementos
-# elementosCruce = traerElementosCruce(elementos,0.5)
-# print elementosCruce
 
+def cruzarCromosomas(cromosomas):
+	print cromosomas
+	hijo = []
+	
+	papa = cromosomas.pop()
+	mama = cromosomas.pop()
+
+	for j in xrange(1, len(papa)):
+		if not(papa[0] in hijo):
+			hijo.append(papa[0])
+		if j <= len(papa):
+			if not(mama[j] in hijo):
+		 		hijo.append(mama[j])
+	for letra in xrange(0,len(papa)):
+		if not(papa[letra] in hijo):
+			hijo.append(papa[letra])
+		
+			
+			 		
+	print papa
+	print mama
+	print hijo
+
+cromosomas = [('C','B','A','D','E'),('D','C','B','A','E')]
+cruzarCromosomas(cromosomas)
 

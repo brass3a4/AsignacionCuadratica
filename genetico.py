@@ -40,7 +40,9 @@ def principal():
 		sumaAptitudes = sumaAptitudes + aptitudCromosomaAnalizado
 	probabilidadesUnitarias = calcularProbabilidadUnitaria(aptitudesGeneracion, sumaAptitudes)
 	probabilidadesAcumuladas = calcularProbabilidadAcumulada(probabilidadesUnitarias)
-	print probabilidadesUnitarias
-	print probabilidadesAcumuladas
+
+	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas)
+	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc) 
+	print cromosomasACruzar
 
 principal()
