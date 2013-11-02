@@ -38,7 +38,7 @@ def tomarGeneracion(poblacion,cantidad):
 		else:
 			numeros.append(numero)
 	for i in range(1,cantidad+1):
-		generacion[i]=poblacion[numeros[i]]
+		generacion.append(poblacion[numeros[i]])
 	return generacion
 
 
