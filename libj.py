@@ -1,19 +1,33 @@
 # -*- encoding: utf-8 -*-
-
+import random
 import itertools
+def eligeCemilla():
+	while(1):
+		num=random.randrange(1000000)
+		contador = 0
+		verificar= False
+		for i in range(1,num+1):
+			if (num% i)==0:
+				contador = contador + 1
+			if contador >= 3:
+				verificar=True
+				break
+		if contador==2 or verificar==False:
+			primo=num
+			return primo
 
-def generaAleatDec(m,primo):
+def generaAleatDec(m):
 	Z={}
-	U={}
+	aleatoriosDecimales={}
 	denom= (pow(2,31))-1.0
 	a = 630360016
-	Z[0] = primo
+	Z[0] = 	eligeCemilla()
 	for i in range(1, m+1):
 		Z[i]=(a*Z[i-1]) % denom
 	for i in range (1,m+1):
-		U[i]=round((Z[i]/denom),3)
-	U[0]=round(Z[0]/denom,3)
-	return U
+		aleatoriosDecimales[i]=round((Z[i]/denom),6)
+	aleatoriosDecimales[0]=round(Z[0]/denom,6)
+	return aleatoriosDecimales
 
 # Descripción: Esta función genera las n permutaciones 
 # Parametros: [int n]
@@ -43,26 +57,20 @@ def generarPoblacion(n):
 # - Quito el menos apto
 
 def ruleta(generacion):
-	numeros = generaAleatDec(10,232435)
-	q0 = 0.3
-	q1 = 0.6
-	q2 = 0.8
-	q3 = 1
+	numeros = generaAleatDec(10)
+	Q = [0.0,0.3,0.6,1.0]
 	elementos = []
+	print numeros
 	for i in xrange(1,len(generacion)+1):
-		if numeros[i] < q0 :
-			elementos.append(generacion[0])
-		elif numeros[i] > q0 and numeros[i] <= q1:
-			elementos.append(generacion[1])
-		elif numeros[i] > q1 and numeros[i] <= q2:
-			elementos.append(generacion[2])
-		elif numeros[i] > q2 and numeros[i] <= q3:
-			elementos.append(generacion[3])
+		for qi in xrange(0, len(Q)):
+			if numeros[i] <= Q[qi]:				
+				elementos.append(generacion[qi])
+				break
 
 	return elementos
 
 def seleccionarElementosCruce(elementos,pc):
-	numeros2 = generaAleatDec(10,232)
+	numeros2 = generaAleatDec(10)
 	elementosCruce = []
 
 	for j in xrange(1, len(elementos)+1):
@@ -71,8 +79,16 @@ def seleccionarElementosCruce(elementos,pc):
 
 	return elementosCruce
 
-generacion = [('C', 'A', 'D', 'B'), ('B', 'A', 'D', 'C'), ('B', 'D', 'C', 'A'), ('D', 'C', 'A', 'B')]
-elementos = ruleta(generacion)
-print elementos
-elementosCruce = seleccionarElementosCruce(elementos,0.5)
-print elementosCruce
+def traerElementosCruce(elementos,pc):
+	elementosCruce = seleccionarElementosCruce(elementos,pc)
+	while (len(elementosCruce)%2) !=0 or len(elementosCruce) == 0:
+		elementosCruce = seleccionarElementosCruce(elementos,pc)
+	return elementosCruce
+
+# generacion = [('C', 'A', 'D', 'B'), ('B', 'A', 'D', 'C'), ('B', 'D', 'C', 'A'), ('D', 'C', 'A', 'B')]
+# elementos = ruleta(generacion)
+# print elementos
+# elementosCruce = traerElementosCruce(elementos,0.5)
+# print elementosCruce
+
+
