@@ -32,7 +32,7 @@ def tomarGeneracion(poblacion,cantidad):
 	while len(numeros) < cantidad:
 		numeros.add(random.randint(min, max))
 	for i in numeros:
-		generacion.add(poblacion[i])
+		generacion.append(poblacion[i])
 	return generacion
 
 
