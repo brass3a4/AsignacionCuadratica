@@ -23,10 +23,15 @@ def selCrom(a, pm):
 #w tamaño del cromosoma
 #ver que posicion muta el cromosoma
 def generadorEnt(w):
-	for i in range(0,2):
+	#selecciona dos elementos del cromosoma seleccionado
+	for i in range(0,w):
 		number_random_int = random.randint(1,w)
-		gen.append(number_random_int)
-	return gen
+		if not number_random_int in gen:
+			gen.append(number_random_int)
+	for i in range(0,2):
+		gen_f.append(gen[i])
+	return gen_f
+
 
 #mutacion primaria del cromosoma (intercambio de la posicion seleccionada del cromosoma)
 def mutPrim(cromosoma, gen):
