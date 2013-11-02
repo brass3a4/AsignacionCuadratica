@@ -39,7 +39,6 @@ def tomarGeneracion(poblacion,cantidad):
 	return generacion
 
 
-
 #funcion genera numeros aleatorios [0,1]
 #funcion: Zi=(a*Zi-1) mod m
 #parametros: modulo m, el multiplicador a y la semilla o valor de comienzo Z0 son enteros no negativos
