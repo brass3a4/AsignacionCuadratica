@@ -43,8 +43,8 @@ def generarPoblacion(n):
 
 # Descripción: Selecciona los cromosomas candidatos a cruce dependiendo de la probailidad acumulada Q
 # Parámetros: [list generacion, list Q]
-def ruleta(generacion,Q):
-	numeros = generaAleatDec(10)
+def ruleta(generacion,Q,cardinalidadGeneracion):
+	numeros = generaAleatDec(cardinalidadGeneracion)
 	elementos = []
 	# Desde 1 hasta el tamaño de la generación
 	for i in xrange(1,len(generacion)+1):
