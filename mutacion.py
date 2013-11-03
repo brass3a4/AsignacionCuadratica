@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import random
 gen =[]
+gen_f=[]
 b=[]
 b_pos=[]
 mutar = []
@@ -10,7 +11,7 @@ mutar = []
 #cromosoma =['A','B','C','D','E','F']
 
 #agarrar decimales del tamaño de la poblacion (genera n numeros aleatorios)
-a = generaAleatDec(m,primo)
+a = generaAleatDec(m)
 
 #comparando con pm 
 def selCrom(a, pm):
