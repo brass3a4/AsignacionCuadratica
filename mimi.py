@@ -50,7 +50,7 @@ def generaAleatDec(m):
 	aleatoriosDecimales={}
 	denom= (pow(2,31))-1.0
 	a = 630360016
-	Z[0] = 	random.randrange(1000000)
+	Z[0] = 	random.randrange(100)
 	for i in range(1, m+1):
 		Z[i]=(a*Z[i-1]) % denom
 	for i in range (1,m+1):
