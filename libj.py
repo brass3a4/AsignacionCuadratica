@@ -8,12 +8,12 @@ def generaAleatDec(m):
 	aleatoriosDecimales={}
 	denom= (pow(2,31))-1.0
 	a = 630360016
-	Z[0] = 	random.randrange(1000000)
+	Z[0] = random.randrange(1000000)
 	for i in range(1, m+1):
 		Z[i]=(a*Z[i-1]) % denom
 	for i in range (1,m+1):
 		aleatoriosDecimales[i]=round((Z[i]/denom),6)
-	return aleatoriosDecimales 
+	return aleatoriosDecimales  
 
 # Descripción: Esta función genera las n permutaciones 
 # Parametros: [int n]
@@ -73,7 +73,7 @@ def seleccionarElementosCruce(elementos,pc,cardinalidadGeneracion):
 def traerElementosCruce(elementos,pc,cardinalidadGeneracion):
 	elementosCruce = seleccionarElementosCruce(elementos,pc,cardinalidadGeneracion)
 	while (len(elementosCruce)%2) !=0 or len(elementosCruce) == 0:
-		elementosCruce = seleccionarElementosCruce(elementos,pc)
+		elementosCruce = seleccionarElementosCruce(elementos,pc,cardinalidadGeneracion)
 	return elementosCruce
 
 # Descripción: Cruzamos un número PAR de cromosomas
