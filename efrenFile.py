@@ -42,4 +42,11 @@ def calcularProbabilidadAcumulada(probabilidadesUnitarias):
 			sumaAcumulada = round(sumaAcumulada)
 		probabilidadesAcumuladas.append(sumaAcumulada)
 	return probabilidadesAcumuladas
+
+def mutarGeneracionCruzada(nuevosCromosomas, pm, n):
+	for cromosoma in nuevosCromosomas:
+		print cromosoma
+
+
+
 	
