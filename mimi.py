@@ -126,6 +126,10 @@ def muta(cromosomas):
 	
 #comparando con pm, selecciona los elementos de la muestra que van a mutar
 def mutar(muestraPob,pm):
+	muestrachida = []
+	for k in xrange(0, len(muestraPob)):
+		muestrachida.append(list(muestraPob[k]))
+
 	cromosomas=[]
 	b_pos=[]
 	#generacion_mutada=[]
@@ -135,6 +139,6 @@ def mutar(muestraPob,pm):
 		if (a[i] < pm):
 			b_pos.append(i+1)
 	for i in range (0,len(b_pos)):
-		cromosomas.append(muestraPob[b_pos[i]-1])
+		cromosomas.append(muestrachida[b_pos[i]-1])
 	generacion_mutada=muta(cromosomas)
 	return generacion_mutada
