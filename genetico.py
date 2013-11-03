@@ -65,7 +65,7 @@ def principal():
 	# 		nuevaGeneracion.append(generacion[i])
 	# print "nuevaGeneracion"
 	# print nuevaGeneracion
-	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc) 
+	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc,cardinalidadGeneracion) 
 	#print cromosomasACruzar
 	nuevosCromosomas =cruzarCromosomas(cromosomasACruzar,n,matrizA,matrizB)
 
