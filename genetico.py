@@ -5,17 +5,28 @@ from libj import *
 from mimi import *
 from efrenFile import *
 from beatriz import *
+import sys
+import os
 
+# Validamos el número de argumentos para ejecutar el programa
+if len(sys.argv) != 5:
+	print "$ python genetico.py [Tamaño de cromosoma] [Cardinalidad de la generación] [Probabilidad de cruce] [Probabilidad de mutación]"
+	sys.exit('No coicide el número de argumentos') 
+
+# n:= Tamaño del cromosoma
+n = int(sys.argv[1])
+#  cardinalidadGeneracion := Cardinalidad de la generación
+cardinalidadGeneracion = int(sys.argv[2])
 
 # Definimos las probabilidades
 # pc := Probablilidad de cruce
 # pm := Probabilidad de mutación
 
-pc = 0.5
-pm = 0.1
+pc = float(sys.argv[3])
+pm = float(sys.argv[4])
 
-# n:= Tamaño del cromosoma
-n = 4
+# Limpiamos pantalla antes de iniciar
+os.system("clear")
 
 def principal():
 	aptitudCromosomasMasApto = 0
@@ -27,7 +38,7 @@ def principal():
 	matrizA = cargarMatriz('matrizA.txt')
 	matrizB = cargarMatriz('matrizB.txt')
 	# Tomamos la generación cero de la población total
-	generacion = tomarGeneracion(poblacion,n)
+	generacion = tomarGeneracion(poblacion,cardinalidadGeneracion)
 	aptitudesGeneracion = []
 
 	# Calculamos la aptitud de cada cromosoma
@@ -40,7 +51,12 @@ def principal():
 		sumaAptitudes = sumaAptitudes + aptitudCromosomaAnalizado
 	probabilidadesUnitarias = calcularProbabilidadUnitaria(aptitudesGeneracion, sumaAptitudes)
 	probabilidadesAcumuladas = calcularProbabilidadAcumulada(probabilidadesUnitarias)
-	print probabilidadesUnitarias
-	print probabilidadesAcumuladas
+
+	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas)
+	print cromosomasRuleta
+	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc) 
+	print cromosomasACruzar
+	nuevosCromosomas =cruzarCromosomas(cromosomasACruzar,n,matrizA,matrizB)
+	print nuevosCromosomas
 
 principal()
