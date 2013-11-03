@@ -43,8 +43,8 @@ def generarPoblacion(n):
 
 # Descripción: Selecciona los cromosomas candidatos a cruce dependiendo de la probailidad acumulada Q
 # Parámetros: [list generacion, list Q]
-def ruleta(generacion,Q):
-	numeros = generaAleatDec(10)
+def ruleta(generacion,Q,cardinalidadGeneracion):
+	numeros = generaAleatDec(cardinalidadGeneracion)
 	elementos = []
 	# Desde 1 hasta el tamaño de la generación
 	for i in xrange(1,len(generacion)+1):
@@ -58,9 +58,9 @@ def ruleta(generacion,Q):
 
 # Descripción: Selecciona cromosomas a cruzar dependiendo de la probabilidad de cruce
 # Parámetros: [list elementos,float pc]
-def seleccionarElementosCruce(elementos,pc):
+def seleccionarElementosCruce(elementos,pc,cardinalidadGeneracion):
 	# Obtengo números aleatorios
-	numeros2 = generaAleatDec(10)
+	numeros2 = generaAleatDec(cardinalidadGeneracion)
 	elementosCruce = []
 	# Para cada número aleatorio que sea mayor a la PC Agrego el cromosoma correspondiente a la lista de elementos a cruzar
 	for j in xrange(1, len(elementos)+1):
@@ -70,8 +70,8 @@ def seleccionarElementosCruce(elementos,pc):
 
 # Descripción: Mientras no tenga un número PAR de cromosomas selecciono cromosomas
 # Parámetros: [list elementos,float pc]
-def traerElementosCruce(elementos,pc):
-	elementosCruce = seleccionarElementosCruce(elementos,pc)
+def traerElementosCruce(elementos,pc,cardinalidadGeneracion):
+	elementosCruce = seleccionarElementosCruce(elementos,pc,cardinalidadGeneracion)
 	while (len(elementosCruce)%2) !=0 or len(elementosCruce) == 0:
 		elementosCruce = seleccionarElementosCruce(elementos,pc)
 	return elementosCruce

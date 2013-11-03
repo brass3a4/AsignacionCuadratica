@@ -56,17 +56,16 @@ def principal():
 	probabilidadesAcumuladas = calcularProbabilidadAcumulada(probabilidadesUnitarias)
 	print "generacion"
 	print generacion
-	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas)
+	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas,cardinalidadGeneracion)
 	print "cromosomasRuleta"
 	print cromosomasRuleta
-	# nuevaGeneracion = cromosomasRuleta
+	# nuevaGeneracion = []
 	# for i in xrange(0,len(generacion)):
-	# 	print generacion[i]
 	# 	if not(generacion[i] in cromosomasRuleta):
 	# 		nuevaGeneracion.append(generacion[i])
 	# print "nuevaGeneracion"
 	# print nuevaGeneracion
-	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc) 
+	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc,cardinalidadGeneracion) 
 	#print cromosomasACruzar
 	nuevosCromosomas =cruzarCromosomas(cromosomasACruzar,n,matrizA,matrizB)
 
