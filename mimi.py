@@ -38,32 +38,24 @@ def tomarGeneracion(poblacion,cantidad):
 		generacion.append(poblacion[numeros[i]-1])
 	return generacion
 
-
-
-#funcion genera numeros aleatorios [0,1]
-#funcion: Zi=(a*Zi-1) mod m
-#parametros: modulo m, el multiplicador a y la semilla o valor de comienzo Z0 son enteros no negativos
-#se verifica que:0 menor o igual que Zi menor que m
-#Para obtener un numero aleatorio de la distribucion uniforme [0,1) se debe hacer Ui = Zi/m. Además de ser no negativos se debe veriﬁcar que: 0 < m, a < m, c < m, Z0 < m
 def generaAleatDec(m):
 	Z={}
 	aleatoriosDecimales={}
 	denom= (pow(2,31))-1.0
 	a = 630360016
-	Z[0] = 	random.randrange(100)
+	Z[0] = 	random.randrange(1000000)
 	for i in range(1, m+1):
 		Z[i]=(a*Z[i-1]) % denom
 	for i in range (1,m+1):
 		aleatoriosDecimales[i]=round((Z[i]/denom),6)
-	return aleatoriosDecimales  
- 
-	
+	return aleatoriosDecimales   
 
 #funcion para mutar los cromosomas seleccionados, aplicando el metodo dos de mutacion
 #recibe: lista de cromosomas que van a mutar
 #devuelve: lista de cromosomas mutados
 
 def mutSec(elemento,operadores):
+	print "operadores",operadores
 	elem_mutado=elemento
 	mut1=operadores[0]
 	mut2=operadores[1]
@@ -78,6 +70,7 @@ def mutSec(elemento,operadores):
 	
 #mutacion primaria del cromosoma (intercambio de la posicion seleccionada del cromosoma)
 def mutPrim(elemento, operadores):
+	print "operadores",operadores
 	fin=[]
 	lim=len(elemento)
 	for k in range (0,len(operadores)):
@@ -95,9 +88,9 @@ def generadorEnt(w,cantidad):
 	operadores=[]
 	#selecciona dos elementos del cromosoma seleccionado
 	while len(operadores) < cantidad:
-		numero = random.randint(1,6)
+		numero = random.randint(1,w)
 		if numero in operadores:
-			numero = random.randint(1,6)
+			numero = random.randint(1,w)
 		else:
 			operadores.append(numero)
 	if(operadores[0]>operadores[1]):
@@ -117,25 +110,41 @@ def muta(cromosomas):
 		w=len(elemento)
 		#llama a la funcion 
 		operadores=generadorEnt(w,cantidad)
-		elemento_mutado=mutPrim(elemento, operadores)
+		elemento_mutado=mutSec(elemento, operadores)
 		cromosomas_mutados.append(elemento_mutado)
 	return cromosomas_mutados
 	
 #comparando con pm, selecciona los elementos de la muestra que van a mutar
 def mutar(muestraPob,pm):
 	muestrachida = []
+	j=0
+	generacion_mutada=[]
 	for k in xrange(0, len(muestraPob)):
 		muestrachida.append(list(muestraPob[k]))
+	#print "muestra", muestrachida
 	cromosomas=[]
 	b_pos=[]
+	non_b_pos=[]
 	#generacion_mutada=[]
 	a=generaAleatDec(len(muestraPob))
-	#a=[0.5,0.4,0.3,0.7]
 	#selecciona los elementos de la muestra que van a mutar
 	for i in range(1,len(a)):
 		if (a[i] < pm):
 			b_pos.append(i+1)
-	for i in range (0,len(b_pos)):
-		cromosomas.append(muestrachida[b_pos[i]-1])
-	generacion_mutada=muta(cromosomas)
+		else:
+			non_b_pos.append(i+1)
+	for t in range (0,len(b_pos)):
+		cromosomas.append(muestrachida[b_pos[t]-1])
+	gen_mutada=muta(cromosomas)
+	#print "tamaño de la generacion mutada", len(gen_mutada)
+	#print "bpos",b_pos
+	for k in range(1,len(muestrachida)+1):
+		#print "valor i",k
+		if k in b_pos:
+			#print"valor j",j
+			generacion_mutada.append(gen_mutada[j])
+			j=j+1
+		else:
+			generacion_mutada.append(muestrachida[k-1])
+	#print "elementos que mutaron",b_pos
 	return generacion_mutada

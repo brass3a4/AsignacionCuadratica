@@ -59,18 +59,22 @@ def principal():
 	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas,cardinalidadGeneracion)
 	print "cromosomasRuleta"
 	print cromosomasRuleta
-	# nuevaGeneracion = []
-	# for i in xrange(0,len(generacion)):
-	# 	if not(generacion[i] in cromosomasRuleta):
-	# 		nuevaGeneracion.append(generacion[i])
-	# print "nuevaGeneracion"
-	# print nuevaGeneracion
 	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc,cardinalidadGeneracion) 
-	#print cromosomasACruzar
+	print "cromosomas a cruzar"
+	print cromosomasACruzar
 	nuevosCromosomas =cruzarCromosomas(cromosomasACruzar,n,matrizA,matrizB)
 
+	print nuevosCromosomas
+
+	for salen in nuevosCromosomas['salen']:
+		if (salen in generacion):
+			generacion.remove(salen)
+	for entran in nuevosCromosomas['entran']:
+		generacion.append(entran)
+	print "Nueva Generacion"
+	print generacion
 	#print nuevosCromosomas
-	cromosomasMutados = mutar(nuevosCromosomas,pm)
-	print cromosomasMutados
+	#cromosomasMutados = mutar(nuevosCromosomas,pm)
+	#print cromosomasMutados
 
 principal()

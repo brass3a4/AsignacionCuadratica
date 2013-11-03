@@ -1,8 +1,10 @@
 import itertools
 import string
 import ast
+import random
 
 from beatriz import *
+from mimi import *
 
 
 #Parametros: [lista cromosoma, int n, arreglo 2D matrizA, arreglo 2D matrizB]
@@ -44,9 +46,21 @@ def calcularProbabilidadAcumulada(probabilidadesUnitarias):
 	return probabilidadesAcumuladas
 
 def mutarGeneracionCruzada(nuevosCromosomas, pm, n):
+	resultadoMutacion = []
 	for cromosoma in nuevosCromosomas:
-		print cromosoma
-
-
-
+		cromosoma = list(cromosoma)
+		marcaA = random.randrange(n)
+		marcaB = random.randrange(n)
+		while marcaA == marcaB:
+			marcaB = random.randrange(n)
+		numDecAleat = generaAleatDec(1)
+		num = numDecAleat.get(1)
+		#print num
+		if num < pm:
+			aux = cromosoma[marcaA]
+			cromosoma[marcaA] = cromosoma[marcaB]
+			cromosoma[marcaB] = aux
+		cromosoma = tuple(cromosoma)
+		resultadoMutacion.append(cromosoma)
+	return resultadoMutacion
 	
