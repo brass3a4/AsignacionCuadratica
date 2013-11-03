@@ -3,6 +3,11 @@ import random
 import itertools
 from efrenFile import *
 
+#funcion genera numeros aleatorios [0,1]
+#funcion: Zi=(a*Zi-1) mod m
+#parametros: modulo m, el multiplicador a y la semilla o valor de comienzo Z0 son enteros no negativos
+#se verifica que:0 menor o igual que Zi menor que m
+#Para obtener un numero aleatorio de la distribucion uniforme [0,1) se debe hacer Ui = Zi/m. Además de ser no negativos se debe veriﬁcar que: 0 < m, a < m, c < m, Z0 < m
 def eligeCemilla():
 	while(1):
 		num=random.randrange(1000000)
@@ -71,7 +76,6 @@ def ruleta(generacion,Q):
 			if numeros[i] <= Q[qi]:				
 				elementos.append(generacion[qi])
 				break
-
 	return elementos
 
 # Descripción: Selecciona cromosomas a cruzar dependiendo de la probabilidad de cruce
@@ -94,30 +98,35 @@ def traerElementosCruce(elementos,pc):
 		elementosCruce = seleccionarElementosCruce(elementos,pc)
 	return elementosCruce
 
-
-def cruzarCromosomas(cromosomas):
-	print cromosomas
+# Descripción: Cruzamos un número PAR de cromosomas
+# Parámetros: [list cromosomas, int n, list matrizA, list matrizB]
+def cruzarCromosomas(cromosomas,n,matrizA,matrizB):
 	hijo = []
-	
-	papa = cromosomas.pop()
-	mama = cromosomas.pop()
+	nuevosCromosomas = []
+	for i in xrange(0,len(cromosomas),2):
+		# Tomamos los primeros 2 cromosomas a cruzar
+		papa = cromosomas.pop()
+		mama = cromosomas.pop()
+		# Hacemos el algoritmo de cruce
+		for j in xrange(1, len(papa)):
+			if not(papa[0] in hijo): # Colocamos el primer Gen en el hijo
+				hijo.append(papa[0])
+			if j <= len(papa):
+				if not(mama[j] in hijo): #Tomamos el Gen j del segundo cromosoma y lo ponemos en el hijo
+			 		hijo.append(mama[j])
+		for letra in xrange(0,len(papa)): # Si nos falto un Gen en el hijo colo camos el elemento que nos falta
+			if not(papa[letra] in hijo):
+				hijo.append(papa[letra])
+		# Calculamos las aptitudes de los cromosomas 
+		aptitudPapa = calcularAptitud(papa, n, matrizA, matrizB)
+		aptitudMama = calcularAptitud(mama, n, matrizA, matrizB)
+		# Nos quedamos con el cromosoma de mayor aptitud y el hijo (Cromosoma resultante de la cruza)
+		if aptitudPapa < aptitudMama:
+			nuevosCromosomas.append(papa)
+			nuevosCromosomas.append(hijo)
+		else:
+			nuevosCromosomas.append(mama)
+			nuevosCromosomas.append(hijo)
+	return nuevosCromosomas
 
-	for j in xrange(1, len(papa)):
-		if not(papa[0] in hijo):
-			hijo.append(papa[0])
-		if j <= len(papa):
-			if not(mama[j] in hijo):
-		 		hijo.append(mama[j])
-	for letra in xrange(0,len(papa)):
-		if not(papa[letra] in hijo):
-			hijo.append(papa[letra])
-		
-			
-			 		
-	print papa
-	print mama
-	print hijo
-
-cromosomas = [('C','B','A','D','E'),('D','C','B','A','E')]
-cruzarCromosomas(cromosomas)
 
