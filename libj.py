@@ -3,38 +3,17 @@ import random
 import itertools
 from efrenFile import *
 
-#funcion genera numeros aleatorios [0,1]
-#funcion: Zi=(a*Zi-1) mod m
-#parametros: modulo m, el multiplicador a y la semilla o valor de comienzo Z0 son enteros no negativos
-#se verifica que:0 menor o igual que Zi menor que m
-#Para obtener un numero aleatorio de la distribucion uniforme [0,1) se debe hacer Ui = Zi/m. Además de ser no negativos se debe veriﬁcar que: 0 < m, a < m, c < m, Z0 < m
-def eligeCemilla():
-	while(1):
-		num=random.randrange(1000000)
-		contador = 0
-		verificar= False
-		for i in range(1,num+1):
-			if (num% i)==0:
-				contador = contador + 1
-			if contador >= 3:
-				verificar=True
-				break
-		if contador==2 or verificar==False:
-			primo=num
-			return primo
-
 def generaAleatDec(m):
 	Z={}
 	aleatoriosDecimales={}
 	denom= (pow(2,31))-1.0
 	a = 630360016
-	Z[0] = 	eligeCemilla()
+	Z[0] = 	random.randrange(1000000)
 	for i in range(1, m+1):
 		Z[i]=(a*Z[i-1]) % denom
 	for i in range (1,m+1):
 		aleatoriosDecimales[i]=round((Z[i]/denom),6)
-	aleatoriosDecimales[0]=round(Z[0]/denom,6)
-	return aleatoriosDecimales
+	return aleatoriosDecimales 
 
 # Descripción: Esta función genera las n permutaciones 
 # Parametros: [int n]
