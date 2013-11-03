@@ -50,7 +50,6 @@ def generarPoblacion(n):
 	
 	# Creo una lista con todas las n permutaciones
 	poblacion = list(itertools.permutations(lista))
-
 	return poblacion
 
 # Elementos de entrada: Generación i

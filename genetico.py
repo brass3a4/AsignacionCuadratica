@@ -34,13 +34,16 @@ def principal():
 	cromosomaMasApto = ""
 	# Generamos la población
 	poblacion = generarPoblacion(n)
+
 	# Leemos las matrices A y B que están en los ficheros
 	matrizA = cargarMatriz('matrizA.txt')
 	matrizB = cargarMatriz('matrizB.txt')
 	# Tomamos la generación cero de la población total
 	generacion = tomarGeneracion(poblacion,cardinalidadGeneracion)
-	aptitudesGeneracion = []
 
+
+	aptitudesGeneracion = []
+	
 	# Calculamos la aptitud de cada cromosoma
 	for cromosoma in generacion:
 		aptitudCromosomaAnalizado = calcularAptitud(cromosoma, n, matrizA, matrizB)
@@ -51,12 +54,24 @@ def principal():
 		sumaAptitudes = sumaAptitudes + aptitudCromosomaAnalizado
 	probabilidadesUnitarias = calcularProbabilidadUnitaria(aptitudesGeneracion, sumaAptitudes)
 	probabilidadesAcumuladas = calcularProbabilidadAcumulada(probabilidadesUnitarias)
-
+	print "generacion"
+	print generacion
 	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas)
+	print "cromosomasRuleta"
 	print cromosomasRuleta
+	nuevaGeneracion = cromosomasRuleta
+	for i in xrange(0,len(generacion)):
+		print generacion[i]
+		if not(generacion[i] in cromosomasRuleta):
+			nuevaGeneracion.append(generacion[i])
+	print "nuevaGeneracion"
+	print nuevaGeneracion
 	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc) 
-	print cromosomasACruzar
+	#print cromosomasACruzar
 	nuevosCromosomas =cruzarCromosomas(cromosomasACruzar,n,matrizA,matrizB)
-	print nuevosCromosomas
+
+	#print nuevosCromosomas
+	#cromosomasMutados = mutar(nuevosCromosomas,pm)
+	#print cromosomasMutados
 
 principal()
