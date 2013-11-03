@@ -53,10 +53,30 @@ def principal():
 	probabilidadesAcumuladas = calcularProbabilidadAcumulada(probabilidadesUnitarias)
 
 	cromosomasRuleta = ruleta(generacion,probabilidadesAcumuladas)
-	print cromosomasRuleta
+	#print cromosomasRuleta
 	cromosomasACruzar = traerElementosCruce(cromosomasRuleta,pc) 
-	print cromosomasACruzar
+	#print cromosomasACruzar
 	nuevosCromosomas =cruzarCromosomas(cromosomasACruzar,n,matrizA,matrizB)
-	print nuevosCromosomas
+	
+	# ********************************************************************
+	aptitudesNuevaGeneracion = []
+	sumaAptitudesNuevas = 0
+	
+	siguienteGeneracion = mutarGeneracionCruzada(nuevosCromosomas, pm, n)
+	for nuevoCromosoma in siguienteGeneracion:
+		aptitudNuevoCromosomaAnalizado = calcularAptitud(nuevoCromosoma, n, matrizA, matrizB)
+		aptitudesNuevaGeneracion.append(aptitudNuevoCromosomaAnalizado)
+		if aptitudNuevoCromosomaAnalizado < aptitudCromosomasMasApto:
+			aptitudCromosomasMasApto = aptitudNuevoCromosomaAnalizado
+			cromosomaMasApto = nuevoCromosoma
+		sumaAptitudesNuevas = sumaAptitudesNuevas + aptitudNuevoCromosomaAnalizado
+	print sumaAptitudes
+	print sumaAptitudesNuevas
+	if sumaAptitudesNuevas < sumaAptitudes:
+		print "Mejoro con respecto la generacion anterior"
+	else:
+		print "No mejoro con respecto a la generacion anterior"
+
+	# ********************************************************************
 
 principal()
