@@ -37,8 +37,8 @@ def principal():
 	poblacion = generarPoblacion(n)
 
 	# Leemos las matrices A y B que están en los ficheros
-	matrizA = cargarMatriz('matrizA2.txt')
-	matrizB = cargarMatriz('matrizB2.txt')
+	matrizA = cargarMatriz('matrizA1.txt')
+	matrizB = cargarMatriz('matrizB1.txt')
 	# Tomamos la generación cero de la población total
 	generacion = tomarGeneracion(poblacion,cardinalidadGeneracion)
 	#print "generacion"
