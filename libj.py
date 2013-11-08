@@ -55,10 +55,10 @@ def ruleta(generacion,Q,cardinalidadGeneracion):
 	# Desde 1 hasta el tamaño de la generación
 	for cromosoma in generacion:
 		numeros = generaAleatDec(1)
-		#print numeros
+		
 		# Desde 0 hasta el tamaño de Q
 		for qi in xrange(1,tam):
-			# print numeros
+			
 			# Si el Q[qi] correspondiente es <= al número aleatorio seleccionamos al cromosoma Q[qi] como candidato a cruce
 			if numeros[1] < Q[qi]:				
 				elementos.append(generacion[qi-1])
@@ -71,7 +71,7 @@ def ruleta(generacion,Q,cardinalidadGeneracion):
 def seleccionarElementosCruce(elementos,pc):
 	# Obtengo números aleatorios
 	numeros2 = generaAleatDec(10)
-	#print numeros2
+	
 	elementosCruce = []
 	j=1
 	# Para cada número aleatorio que sea mayor a la PC Agrego el cromosoma correspondiente a la lista de elementos a cruzar
@@ -89,7 +89,6 @@ def traerElementosCruce(elementos,pc,cardinalidadGeneracion):
 	elementosCruce = seleccionarElementosCruce(elementos,pc)
 	if (len(elementosCruce)%2 != 0):
 		elementos.pop()
-	
 	
 	return elementosCruce
 
@@ -133,5 +132,3 @@ def cruzarCromosomas(cromosomas,n,matrizA,matrizB):
 		nuevosCromosomas['salen'].pop()
 
 	return nuevosCromosomas
-
-
