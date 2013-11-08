@@ -121,11 +121,11 @@ def mutar(muestraPob,pm):
 	generacion_mutada=[]
 	for k in xrange(0, len(muestraPob)):
 		muestrachida.append(list(muestraPob[k]))
-	#print "muestra", muestrachida
+	
 	cromosomas=[]
 	b_pos=[]
 	non_b_pos=[]
-	#generacion_mutada=[]
+	
 	a=generaAleatDec(len(muestraPob))
 	#selecciona los elementos de la muestra que van a mutar
 	for i in range(1,len(a)):
@@ -136,15 +136,14 @@ def mutar(muestraPob,pm):
 	for t in range (0,len(b_pos)):
 		cromosomas.append(muestrachida[b_pos[t]-1])
 	gen_mutada=muta(cromosomas)
-	#print "tamaño de la generacion mutada", len(gen_mutada)
-	#print "bpos",b_pos
+
 	for k in range(1,len(muestrachida)+1):
-		#print "valor i",k
+		
 		if k in b_pos:
-			#print"valor j",j
+			
 			generacion_mutada.append(gen_mutada[j])
 			j=j+1
 		else:
 			generacion_mutada.append(muestrachida[k-1])
-	#print "elementos que mutaron",b_pos
+	
 	return generacion_mutada
