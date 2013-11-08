@@ -34,18 +34,19 @@ def principal():
 	sumaAptitudes = 0
 	cromosomaMasApto = ""
 	# Generamos la población
-	poblacion = generarPoblacion(n)
+	#poblacion = generarPoblacion(n)
 
 	# Leemos las matrices A y B que están en los ficheros
 	matrizA = cargarMatriz('matrizA1.txt')
 	matrizB = cargarMatriz('matrizB1.txt')
 	# Tomamos la generación cero de la población total
-	generacion = tomarGeneracion(poblacion,cardinalidadGeneracion)
+	generacion = crearPrimeraGeneracion(n)
+	#generacion = tomarGeneracion(poblacion,cardinalidadGeneracion)
 	#print "generacion"
 	original = generacion [:]
 	#print generacion
 
-	for iteracion in xrange(1,100):
+	for iteracion in xrange(1,1000):
 		if bandera > 0:
 			generacion = siguienteGeneracion[:]
 

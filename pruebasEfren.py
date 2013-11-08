@@ -46,7 +46,7 @@ def principal():
 	original = generacion [:]
 	#print generacion
 
-	for iteracion in xrange(1,100):
+	for iteracion in xrange(1,1000):
 		if bandera > 0:
 			generacion = siguienteGeneracion[:]
 
